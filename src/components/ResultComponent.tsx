@@ -1,6 +1,8 @@
 const ResultComponent = () => {
   return (
-    <div>ResultComponent</div>
+    <>
+      ResultComponent
+    </>
   )
 }
 

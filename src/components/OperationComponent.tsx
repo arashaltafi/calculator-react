@@ -1,6 +1,9 @@
 const OperationComponent = () => {
   return (
-    <div>OperationComponent</div>
+    <>
+      OperationComponent
+      100
+    </>
   )
 }
 

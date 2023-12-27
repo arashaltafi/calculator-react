@@ -1,6 +1,8 @@
 const ActionsComponent = () => {
   return (
-    <div>ActionsComponent</div>
+    <>
+      ActionsComponent
+    </>
   )
 }
 
