@@ -1,12 +1,21 @@
+import { useRef } from "react"
+
 interface TodoListProps {
     name: string
 }
 
 const TodoList = (props: TodoListProps) => {
 
+    const inputName = useRef(null);
+
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        alert(`Hello World, ${e.currentTarget.innerText}`)
-        console.log(e)
+        alert(`Hello World, ${inputName.current}`)
+        console.log('handleClick', e)
+        console.log('inputName', inputName?.current?.value)
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log('handleChange', e)
     }
 
     return (
@@ -14,7 +23,7 @@ const TodoList = (props: TodoListProps) => {
             <h1 className="h1">TodoList Component</h1>
             <p className="p">{props.name}</p>
             <button className="btn" onClick={(e) => handleClick(e)}>Click Me</button>
-            <input className="input" type="text" />
+            <input ref={inputName} className="input" type="text" onChange={(e) => handleChange(e)} />
         </div>
     )
 }
