@@ -14,6 +14,7 @@ const TodoList = (props: TodoListProps) => {
             <h1 className="h1">TodoList Component</h1>
             <p className="p">{props.name}</p>
             <button className="btn" onClick={(e) => handleClick(e)}>Click Me</button>
+            <input className="input" type="text" />
         </div>
     )
 }
