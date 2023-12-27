@@ -1,4 +1,4 @@
-function App() {
+const App = () => {
 
   return (
     <div className='flex items-center justify-center flex-col gap-8'>
