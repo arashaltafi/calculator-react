@@ -1,16 +1,14 @@
-import React from "react"
-import TodoList from "./components/TodoList"
+import ActionsComponent from "./components/ActionsComponent"
+import OperationComponent from "./components/OperationComponent"
+import ResultComponent from "./components/ResultComponent"
 
 const App = () => {
 
-  const styles: React.CSSProperties = {
-    color: 'black'
-  }
-
   return (
-    <div style={styles} className='flex items-center justify-center flex-col gap-8'>
-      Component App
-      <TodoList name="Prop Test" />
+    <div className='div-col'>
+      <ResultComponent />
+      <ActionsComponent />
+      <OperationComponent />
     </div>
   )
 }

@@ -7,9 +7,9 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: 'React TS Vite PWA',
-        short_name: 'React TS Vite PWA',
-        description: 'React TS Vite PWA Description',
+        name: 'Calculator',
+        short_name: 'Calculator',
+        description: 'Calculator Application',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
