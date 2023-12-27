@@ -5,7 +5,7 @@ interface TodoListProps {
 const TodoList = (props: TodoListProps) => {
     return (
         <div>
-            <h1>TodoList</h1>
+            <h1>TodoList Component</h1>
             <p>{props.name}</p>
         </div>
     )
