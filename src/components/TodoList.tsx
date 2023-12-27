@@ -6,7 +6,7 @@ interface TodoListProps {
 
 const TodoList = (props: TodoListProps) => {
 
-    const inputName = useRef(null);
+    const inputName = useRef<HTMLInputElement>(null);
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         alert(`Hello World, ${inputName.current}`)
