@@ -3,10 +3,17 @@ interface TodoListProps {
 }
 
 const TodoList = (props: TodoListProps) => {
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        alert(`Hello World, ${e.currentTarget.innerText}`)
+        console.log(e)
+    }
+
     return (
-        <div>
-            <h1>TodoList Component</h1>
-            <p>{props.name}</p>
+        <div className="div-col">
+            <h1 className="h1">TodoList Component</h1>
+            <p className="p">{props.name}</p>
+            <button className="btn" onClick={(e) => handleClick(e)}>Click Me</button>
         </div>
     )
 }
