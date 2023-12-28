@@ -22,6 +22,9 @@ const numberSlice = createSlice({
         setAction: (state, action: PayloadAction<string>) => {
             state.action = action.payload
         },
+        calculateResult: (state) => {
+            state.result = state.number
+        },
         clearNumber: (state) => {
             state.number = ''
         }

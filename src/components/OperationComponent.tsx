@@ -77,27 +77,27 @@ const OperationComponent = () => {
           break;
         case '=':
           actionEqual.current?.click()
-          actionEqual.current?.classList.add('operation-btn-active')
+          actionEqual.current?.classList.add('operation-btn-yellow-active')
           break;
         case '+':
           actionPlus.current?.click()
-          actionPlus.current?.classList.add('operation-btn-active')
+          actionPlus.current?.classList.add('operation-btn-yellow-active')
           break;
         case '-':
           actionMinus.current?.click()
-          actionMinus.current?.classList.add('operation-btn-active')
+          actionMinus.current?.classList.add('operation-btn-yellow-active')
           break;
         case '*':
           actionTimes.current?.click()
-          actionTimes.current?.classList.add('operation-btn-active')
+          actionTimes.current?.classList.add('operation-btn-yellow-active')
           break;
         case '/':
           actionDivision.current?.click()
-          actionDivision.current?.classList.add('operation-btn-active')
+          actionDivision.current?.classList.add('operation-btn-yellow-active')
           break;
         case '%':
           actionRemaining.current?.click()
-          actionRemaining.current?.classList.add('operation-btn-active')
+          actionRemaining.current?.classList.add('operation-btn-gray-active')
           break;
         case 'Backspace':
           alert('Backspace')
@@ -119,14 +119,14 @@ const OperationComponent = () => {
       number8.current?.classList.remove('operation-btn-active')
       number9.current?.classList.remove('operation-btn-active')
       actionDot.current?.classList.remove('operation-btn-active')
-      actionEqual.current?.classList.remove('operation-btn-active')
-      actionPlus.current?.classList.remove('operation-btn-active')
-      actionMinus.current?.classList.remove('operation-btn-active')
-      actionTimes.current?.classList.remove('operation-btn-active')
-      actionDivision.current?.classList.remove('operation-btn-active')
-      actionRemaining.current?.classList.remove('operation-btn-active')
-      actionPlusMinus.current?.classList.remove('operation-btn-active')
-      actionAC.current?.classList.remove('operation-btn-active')
+      actionEqual.current?.classList.remove('operation-btn-yellow-active')
+      actionPlus.current?.classList.remove('operation-btn-yellow-active')
+      actionMinus.current?.classList.remove('operation-btn-yellow-active')
+      actionTimes.current?.classList.remove('operation-btn-yellow-active')
+      actionDivision.current?.classList.remove('operation-btn-yellow-active')
+      actionRemaining.current?.classList.remove('operation-btn-gray-active')
+      actionPlusMinus.current?.classList.remove('operation-btn-gray-active')
+      actionAC.current?.classList.remove('operation-btn-gray-active')
     })
   }, [])
 
@@ -140,26 +140,26 @@ const OperationComponent = () => {
       <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
       <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
       <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
-      <button ref={actionDivision} className="operation-btn operation-btn-yellow">÷</button>
+      <button ref={actionDivision} onClick={() => dispatch(numberSlice.actions.setAction('÷'))} className="operation-btn operation-btn-yellow">÷</button>
 
       <button ref={number7} onClick={(e) => handleClickNumbers(e)} className="operation-btn">7</button>
       <button ref={number8} onClick={(e) => handleClickNumbers(e)} className="operation-btn">8</button>
       <button ref={number9} onClick={(e) => handleClickNumbers(e)} className="operation-btn">9</button>
-      <button ref={actionTimes} className="operation-btn operation-btn-yellow">x</button>
+      <button ref={actionTimes} onClick={() => dispatch(numberSlice.actions.setAction('*'))} className="operation-btn operation-btn-yellow">x</button>
 
       <button ref={number4} onClick={(e) => handleClickNumbers(e)} className="operation-btn">4</button>
       <button ref={number5} onClick={(e) => handleClickNumbers(e)} className="operation-btn">5</button>
       <button ref={number6} onClick={(e) => handleClickNumbers(e)} className="operation-btn">6</button>
-      <button ref={actionMinus} className="operation-btn operation-btn-yellow">-</button>
+      <button ref={actionMinus} onClick={() => dispatch(numberSlice.actions.setAction('-'))} className="operation-btn operation-btn-yellow">-</button>
 
       <button ref={number1} onClick={(e) => handleClickNumbers(e)} className="operation-btn">1</button>
       <button ref={number2} onClick={(e) => handleClickNumbers(e)} className="operation-btn">2</button>
       <button ref={number3} onClick={(e) => handleClickNumbers(e)} className="operation-btn">3</button>
-      <button ref={actionPlus} className="operation-btn operation-btn-yellow">+</button>
+      <button ref={actionPlus} onClick={() => dispatch(numberSlice.actions.setAction('+'))} className="operation-btn operation-btn-yellow">+</button>
 
       <button ref={number0} onClick={(e) => handleClickNumbers(e)} className="operation-btn col-span-2">0</button>
       <button ref={actionDot} onClick={(e) => handleClickNumbers(e)} className="operation-btn">.</button>
-      <button ref={actionEqual} className="operation-btn operation-btn-yellow">=</button>
+      <button ref={actionEqual} onClick={() => dispatch(numberSlice.actions.calculateResult())} className="operation-btn operation-btn-yellow">=</button>
     </div>
   )
 }
