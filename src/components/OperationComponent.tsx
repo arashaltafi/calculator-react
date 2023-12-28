@@ -6,6 +6,7 @@ const OperationComponent = () => {
 
   const dispatch = useDispatch()
 
+  const number0 = useRef<HTMLButtonElement | null>(null)
   const number1 = useRef<HTMLButtonElement | null>(null)
   const number2 = useRef<HTMLButtonElement | null>(null)
   const number3 = useRef<HTMLButtonElement | null>(null)
@@ -15,6 +16,15 @@ const OperationComponent = () => {
   const number7 = useRef<HTMLButtonElement | null>(null)
   const number8 = useRef<HTMLButtonElement | null>(null)
   const number9 = useRef<HTMLButtonElement | null>(null)
+  const actionDot = useRef<HTMLButtonElement | null>(null)
+  const actionEqual = useRef<HTMLButtonElement | null>(null)
+  const actionDivision = useRef<HTMLButtonElement | null>(null)
+  const actionPlus = useRef<HTMLButtonElement | null>(null)
+  const actionMinus = useRef<HTMLButtonElement | null>(null)
+  const actionTimes = useRef<HTMLButtonElement | null>(null)
+  const actionRemaining = useRef<HTMLButtonElement | null>(null)
+  const actionAC = useRef<HTMLButtonElement | null>(null)
+  const actionPlusMinus = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
@@ -22,6 +32,10 @@ const OperationComponent = () => {
       const keyName = event.key
       console.log(keyName)
       switch (keyName) {
+        case '0':
+          number0.current?.click()
+          number0.current?.classList.add('operation-btn-active')
+          break;
         case '1':
           number1.current?.click()
           number1.current?.classList.add('operation-btn-active')
@@ -58,6 +72,14 @@ const OperationComponent = () => {
           number9.current?.click()
           number9.current?.classList.add('operation-btn-active')
           break;
+        case '.':
+          actionDot.current?.click()
+          actionDot.current?.classList.add('operation-btn-active')
+          break;
+        case '=':
+          actionEqual.current?.click()
+          actionEqual.current?.classList.add('operation-btn-active')
+          break;
         case 'Backspace':
           alert('Backspace')
           break;
@@ -66,7 +88,8 @@ const OperationComponent = () => {
       }
     })
 
-    document.addEventListener('keyup', (event) => {
+    document.addEventListener('keyup', () => {
+      number0.current?.classList.remove('operation-btn-active')
       number1.current?.classList.remove('operation-btn-active')
       number2.current?.classList.remove('operation-btn-active')
       number3.current?.classList.remove('operation-btn-active')
@@ -76,6 +99,8 @@ const OperationComponent = () => {
       number7.current?.classList.remove('operation-btn-active')
       number8.current?.classList.remove('operation-btn-active')
       number9.current?.classList.remove('operation-btn-active')
+      actionDot.current?.classList.remove('operation-btn-active')
+      actionEqual.current?.classList.remove('operation-btn-active')
     })
   }, [])
 
@@ -86,29 +111,29 @@ const OperationComponent = () => {
 
   return (
     <div className="w-full h-full px-4 py-2 grid grid-cols-4 grid-rows-5 items-center justify-center gap-4">
-      <button className="operation-btn operation-btn-gray">AC</button>
-      <button className="operation-btn operation-btn-gray">±</button>
-      <button className="operation-btn operation-btn-gray">%</button>
-      <button className="operation-btn operation-btn-yellow">÷</button>
+      <button ref={actionAC} className="operation-btn operation-btn-gray">AC</button>
+      <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
+      <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
+      <button ref={actionDivision} className="operation-btn operation-btn-yellow">÷</button>
 
       <button ref={number7} onClick={(e) => handleClickNumbers(e)} className="operation-btn">7</button>
       <button ref={number8} onClick={(e) => handleClickNumbers(e)} className="operation-btn">8</button>
       <button ref={number9} onClick={(e) => handleClickNumbers(e)} className="operation-btn">9</button>
-      <button className="operation-btn operation-btn-yellow">x</button>
+      <button ref={actionTimes} className="operation-btn operation-btn-yellow">x</button>
 
       <button ref={number4} onClick={(e) => handleClickNumbers(e)} className="operation-btn">4</button>
       <button ref={number5} onClick={(e) => handleClickNumbers(e)} className="operation-btn">5</button>
       <button ref={number6} onClick={(e) => handleClickNumbers(e)} className="operation-btn">6</button>
-      <button className="operation-btn operation-btn-yellow">-</button>
+      <button ref={actionMinus} className="operation-btn operation-btn-yellow">-</button>
 
       <button ref={number1} onClick={(e) => handleClickNumbers(e)} className="operation-btn">1</button>
       <button ref={number2} onClick={(e) => handleClickNumbers(e)} className="operation-btn">2</button>
       <button ref={number3} onClick={(e) => handleClickNumbers(e)} className="operation-btn">3</button>
-      <button className="operation-btn operation-btn-yellow">+</button>
+      <button ref={actionPlus} className="operation-btn operation-btn-yellow">+</button>
 
-      <button className="operation-btn col-span-2">0</button>
-      <button className="operation-btn">.</button>
-      <button className="operation-btn operation-btn-yellow">=</button>
+      <button ref={number0} onClick={(e) => handleClickNumbers(e)} className="operation-btn col-span-2">0</button>
+      <button ref={actionDot} onClick={(e) => handleClickNumbers(e)} className="operation-btn">.</button>
+      <button ref={actionEqual} className="operation-btn operation-btn-yellow">=</button>
     </div>
   )
 }
