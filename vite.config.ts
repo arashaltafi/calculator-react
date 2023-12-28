@@ -66,30 +66,7 @@ export default defineConfig({
             purpose: "maskable any"
           }
         ]
-      },
-      injectRegister: 'inline',
-      // registerType: 'autoUpdate',
-      // injectRegister: 'auto',
-      // workbox: {
-      //   runtimeCaching: [
-      //     {
-      //       urlPattern: new RegExp('.*'),
-      //       handler: 'NetworkFirst' //NetworkFirst  or  CacheFirst
-      //     }
-      //   ],
-        
-      //   skipWaiting: true,
-      //   clientsClaim: true,
-      //   sourcemap: true,
-      //   cleanupOutdatedCaches: false,
-      //   globPatterns: [
-      //     'assets/*.{js,css,html,ico,png,svg, png, jpg}',
-      //     '*.{js,css,html,ico,png,svg, png, jpg}'
-      //   ]
-      // },
-      // devOptions: {
-      //   enabled: true
-      // }
+      }
     })
   ]
 })

@@ -5,7 +5,7 @@ interface NumberState {
 }
 
 const initialState: NumberState = {
-    number: '0',
+    number: '',
 }
 
 const numberSlice = createSlice({
@@ -13,7 +13,7 @@ const numberSlice = createSlice({
     initialState,
     reducers: {
         setNumber: (state, action: PayloadAction<string>) => {
-            state.number = action.payload
+            state.number += action.payload
         },
     },
 })

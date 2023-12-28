@@ -18,6 +18,7 @@ const OperationComponent = () => {
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
+      console.log(event.key)
       const keyName = event.key
       console.log(keyName)
       switch (keyName) {
@@ -57,8 +58,8 @@ const OperationComponent = () => {
           number9.current?.click()
           number9.current?.classList.add('operation-btn-active')
           break;
-        case 'backspace':
-          alert('backspace')
+        case 'Backspace':
+          alert('Backspace')
           break;
         default:
           break;
@@ -79,10 +80,8 @@ const OperationComponent = () => {
   }, [])
 
   const handleClickNumbers = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e)
-    if (e.currentTarget.textContent == '1') {
-      dispatch(numberSlice.actions.setNumber('1'))
-    }
+    const numberSelected: string = e?.currentTarget?.textContent || ''
+    dispatch(numberSlice.actions.setNumber(numberSelected))
   }
 
   return (
@@ -92,9 +91,9 @@ const OperationComponent = () => {
       <button className="operation-btn operation-btn-gray">%</button>
       <button className="operation-btn operation-btn-yellow">÷</button>
 
-      <button ref={number7} className="operation-btn">7</button>
-      <button ref={number8} className="operation-btn">8</button>
-      <button ref={number9} className="operation-btn">9</button>
+      <button ref={number7} onClick={(e) => handleClickNumbers(e)} className="operation-btn">7</button>
+      <button ref={number8} onClick={(e) => handleClickNumbers(e)} className="operation-btn">8</button>
+      <button ref={number9} onClick={(e) => handleClickNumbers(e)} className="operation-btn">9</button>
       <button className="operation-btn operation-btn-yellow">x</button>
 
       <button ref={number4} onClick={(e) => handleClickNumbers(e)} className="operation-btn">4</button>
