@@ -1,8 +1,13 @@
 const ResultComponent = () => {
   return (
-    <>
-      ResultComponent
-    </>
+    <div className="w-full px-4 py-2 flex flex-col items-end justify-center gap-2">
+      <p className="text-xl font-normal text-slate-400 dark:text-slate-500">
+        8,546 * 6,223
+      </p>
+      <p className="text-4xl font-bold">
+        531,817,587
+      </p>
+    </div>
   )
 }
 

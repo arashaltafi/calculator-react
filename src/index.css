@@ -91,4 +91,58 @@
   .input {
     @apply px-4 py-3 bg-white text-slate-950 text-center rounded-xl shadow-md shadow-black hover:bg-slate-300 border-2 border-solid border-slate-500;
   }
+
+  .bg-action {
+    @apply w-16 h-14 bg-gray-300 dark:bg-gray-600 text-slate-800 dark:text-slate-100 py-2.5 px-3.5 rounded-3xl rounded-bl-sm
+  }
+
+  .operation-btn {
+    @apply w-full h-full sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl py-1 md:py-2 lg:py-4 xl:py-5 m-auto bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 rounded-3xl shadow-sm md:shadow-md lg:shadow-lg xl:shadow-xl shadow-slate-300 dark:shadow-slate-700 transition;
+
+    &:hover {
+      @apply bg-slate-300 dark:bg-slate-600
+    }
+
+    &:active {
+      @apply bg-slate-400 dark:bg-slate-800 scale-105
+    }
+  }
+
+  .operation-btn-yellow {
+    @apply bg-amber-600 text-slate-100 font-bold transition;
+
+    &:hover {
+      @apply bg-amber-500
+    }
+
+    &:active {
+      @apply bg-amber-700 scale-105
+    }
+  }
+
+  .operation-btn-gray {
+    @apply bg-slate-300 dark:bg-slate-500 font-bold transition;
+
+    &:hover {
+      @apply bg-slate-200 dark:bg-slate-400
+    }
+
+    &:active {
+      @apply bg-slate-400 dark:bg-slate-600 scale-105
+    }
+  }
+
+  .neumorphism {
+    @apply bg-[#f0f0f0] text-black border-none py-4 px-6 text-lg cursor-pointer rounded-xl;
+    box-shadow: 5px 5px 15px #c7c7c7, -5px -5px 15px #ffffff;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 8px 8px 20px #c7c7c7, -8px -8px 20px #ffffff;
+    }
+
+    &:active {
+      box-shadow: inset 5px 5px 15px #c7c7c7, inset -5px -5px 15px #ffffff;
+    }
+  }
 }
