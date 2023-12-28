@@ -17,7 +17,7 @@ const App = () => {
 
   return (
   <Provider store={store}>
-    <div className='div-col py-2 md:py-4 lg:py-8 w-full md:w-2/3 xl:w-1/2 2xl:w-1/3 h-screen md:h-[calc(100vh_-_2rem)] overflow-hidden mx-auto md:my-4 rounded-xl border-0 md:border-2 border-solid border-slate-900 dark:border-slate-100'>
+    <div className='div-col py-2 md:py-4 lg:py-8 w-full md:w-2/3 h-screen md:h-[calc(100vh_-_2rem)] overflow-hidden mx-auto md:my-4 rounded-xl border-0 md:border-2 border-solid border-slate-900 dark:border-slate-100'>
       <section className="w-full">
         <ActionsComponent />
       </section>

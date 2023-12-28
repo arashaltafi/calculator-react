@@ -118,7 +118,7 @@ const OperationComponent = () => {
 
   return (
     <div className="w-full h-full px-4 py-2 grid grid-cols-4 grid-rows-5 items-center justify-center gap-4">
-  <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
+      <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
       <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
       <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
       <button ref={actionDivision} className="operation-btn operation-btn-yellow">÷</button>

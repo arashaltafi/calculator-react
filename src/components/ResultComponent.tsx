@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 const ResultComponent = () => {
 
   const numbers = useSelector((state: any) => state?.numbers.number)
+  const result = useSelector((state: any) => state?.numbers.result)
 
   return (
     <div className="w-full px-4 py-2 flex flex-col items-end justify-center gap-2">
@@ -10,7 +11,7 @@ const ResultComponent = () => {
         {numbers || ' 0 '}
       </p>
       <p className="text-4xl font-bold select-all">
-        531,817,587
+        {result || ' 0 '}
       </p>
     </div>
   )
