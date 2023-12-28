@@ -15,6 +15,9 @@ const numberSlice = createSlice({
         setNumber: (state, action: PayloadAction<string>) => {
             state.number += action.payload
         },
+        clearNumber: (state) => {
+            state.number = ''
+        }
     },
 })
 

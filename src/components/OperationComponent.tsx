@@ -101,6 +101,13 @@ const OperationComponent = () => {
       number9.current?.classList.remove('operation-btn-active')
       actionDot.current?.classList.remove('operation-btn-active')
       actionEqual.current?.classList.remove('operation-btn-active')
+      actionPlus.current?.classList.remove('operation-btn-active')
+      actionMinus.current?.classList.remove('operation-btn-active')
+      actionTimes.current?.classList.remove('operation-btn-active')
+      actionDivision.current?.classList.remove('operation-btn-active')
+      actionRemaining.current?.classList.remove('operation-btn-active')
+      actionPlusMinus.current?.classList.remove('operation-btn-active')
+      actionAC.current?.classList.remove('operation-btn-active')
     })
   }, [])
 
@@ -111,7 +118,7 @@ const OperationComponent = () => {
 
   return (
     <div className="w-full h-full px-4 py-2 grid grid-cols-4 grid-rows-5 items-center justify-center gap-4">
-      <button ref={actionAC} className="operation-btn operation-btn-gray">AC</button>
+  <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
       <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
       <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
       <button ref={actionDivision} className="operation-btn operation-btn-yellow">÷</button>
