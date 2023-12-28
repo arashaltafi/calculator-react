@@ -116,6 +116,10 @@
     }
   }
 
+  .operation-btn-active {
+    @apply bg-slate-400 dark:bg-slate-800 scale-105
+  }
+
   .operation-btn-yellow {
     @apply bg-amber-600 text-slate-100 font-bold transition cursor-pointer;
 

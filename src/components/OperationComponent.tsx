@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import numberSlice from "../redux/numberSlice"
 
 const OperationComponent = () => {
 
   const dispatch = useDispatch()
-  const numbers = useSelector((state: any) => state.numbers)
 
   const number1 = useRef<HTMLButtonElement | null>(null)
   const number2 = useRef<HTMLButtonElement | null>(null)
@@ -24,30 +23,39 @@ const OperationComponent = () => {
       switch (keyName) {
         case '1':
           number1.current?.click()
+          number1.current?.classList.add('operation-btn-active')
           break;
         case '2':
           number2.current?.click()
+          number2.current?.classList.add('operation-btn-active')
           break;
         case '3':
           number3.current?.click()
+          number3.current?.classList.add('operation-btn-active')
           break;
         case '4':
           number4.current?.click()
+          number4.current?.classList.add('operation-btn-active')
           break;
         case '5':
           number5.current?.click()
+          number5.current?.classList.add('operation-btn-active')
           break;
         case '6':
           number6.current?.click()
+          number6.current?.classList.add('operation-btn-active')
           break;
         case '7':
           number7.current?.click()
+          number7.current?.classList.add('operation-btn-active')
           break;
         case '8':
           number8.current?.click()
+          number8.current?.classList.add('operation-btn-active')
           break;
         case '9':
           number9.current?.click()
+          number9.current?.classList.add('operation-btn-active')
           break;
         case 'backspace':
           alert('backspace')
@@ -56,11 +64,23 @@ const OperationComponent = () => {
           break;
       }
     })
+
+    document.addEventListener('keyup', (event) => {
+      number1.current?.classList.remove('operation-btn-active')
+      number2.current?.classList.remove('operation-btn-active')
+      number3.current?.classList.remove('operation-btn-active')
+      number4.current?.classList.remove('operation-btn-active')
+      number5.current?.classList.remove('operation-btn-active')
+      number6.current?.classList.remove('operation-btn-active')
+      number7.current?.classList.remove('operation-btn-active')
+      number8.current?.classList.remove('operation-btn-active')
+      number9.current?.classList.remove('operation-btn-active')
+    })
   }, [])
 
   const handleClickNumbers = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e)
-    if (e.currentTarget.value == '1') {
+    if (e.currentTarget.textContent == '1') {
       dispatch(numberSlice.actions.setNumber('1'))
     }
   }
