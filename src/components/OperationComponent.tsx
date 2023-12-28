@@ -28,7 +28,6 @@ const OperationComponent = () => {
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
-      console.log(event.key)
       const keyName = event.key
       console.log(keyName)
       switch (keyName) {
@@ -79,6 +78,26 @@ const OperationComponent = () => {
         case '=':
           actionEqual.current?.click()
           actionEqual.current?.classList.add('operation-btn-active')
+          break;
+        case '+':
+          actionPlus.current?.click()
+          actionPlus.current?.classList.add('operation-btn-active')
+          break;
+        case '-':
+          actionMinus.current?.click()
+          actionMinus.current?.classList.add('operation-btn-active')
+          break;
+        case '*':
+          actionTimes.current?.click()
+          actionTimes.current?.classList.add('operation-btn-active')
+          break;
+        case '/':
+          actionDivision.current?.click()
+          actionDivision.current?.classList.add('operation-btn-active')
+          break;
+        case '%':
+          actionRemaining.current?.click()
+          actionRemaining.current?.classList.add('operation-btn-active')
           break;
         case 'Backspace':
           alert('Backspace')
