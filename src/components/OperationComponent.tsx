@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import numberSlice from "../redux/numberSlice"
 
 const OperationComponent = () => {
+
+  const dispatch = useDispatch()
+  const numbers = useSelector((state: any) => state.numbers)
 
   const number1 = useRef<HTMLButtonElement | null>(null)
   const number2 = useRef<HTMLButtonElement | null>(null)
@@ -10,20 +15,54 @@ const OperationComponent = () => {
   const number6 = useRef<HTMLButtonElement | null>(null)
   const number7 = useRef<HTMLButtonElement | null>(null)
   const number8 = useRef<HTMLButtonElement | null>(null)
+  const number9 = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
       const keyName = event.key
       console.log(keyName)
-      if (keyName === '1') {
-        number1.current?.click()
-        console.log('clicked')
+      switch (keyName) {
+        case '1':
+          number1.current?.click()
+          break;
+        case '2':
+          number2.current?.click()
+          break;
+        case '3':
+          number3.current?.click()
+          break;
+        case '4':
+          number4.current?.click()
+          break;
+        case '5':
+          number5.current?.click()
+          break;
+        case '6':
+          number6.current?.click()
+          break;
+        case '7':
+          number7.current?.click()
+          break;
+        case '8':
+          number8.current?.click()
+          break;
+        case '9':
+          number9.current?.click()
+          break;
+        case 'backspace':
+          alert('backspace')
+          break;
+        default:
+          break;
       }
     })
   }, [])
 
   const handleClickNumbers = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e)
+    if (e.currentTarget.value == '1') {
+      dispatch(numberSlice.actions.setNumber('1'))
+    }
   }
 
   return (
@@ -35,7 +74,7 @@ const OperationComponent = () => {
 
       <button ref={number7} className="operation-btn">7</button>
       <button ref={number8} className="operation-btn">8</button>
-      <button className="operation-btn">9</button>
+      <button ref={number9} className="operation-btn">9</button>
       <button className="operation-btn operation-btn-yellow">x</button>
 
       <button ref={number4} onClick={(e) => handleClickNumbers(e)} className="operation-btn">4</button>
