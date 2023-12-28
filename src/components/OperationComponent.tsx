@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux"
 import numberSlice from "../redux/numberSlice"
 
@@ -130,9 +130,23 @@ const OperationComponent = () => {
     })
   }, [])
 
+  const [number, setNumber] = useState<string>()
   const handleClickNumbers = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const numberSelected: string = e?.currentTarget?.textContent || ''
-    dispatch(numberSlice.actions.setNumber(numberSelected))
+    const numberSelected: string | null = e.currentTarget.textContent || '0'
+    if (number) {
+      setNumber(number + numberSelected)
+    } else {
+      setNumber(numberSelected)
+    }
+  }
+
+  const handleClickActions = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const actionSelected: string | null = e.currentTarget.textContent || '+'
+    dispatch(numberSlice.actions.setAction(actionSelected))
+    if (number) {
+      dispatch(numberSlice.actions.setNumber(parseInt(number)))
+      setNumber('')
+    }
   }
 
   return (
@@ -140,22 +154,22 @@ const OperationComponent = () => {
       <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
       <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
       <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
-      <button ref={actionDivision} onClick={() => dispatch(numberSlice.actions.setAction('÷'))} className="operation-btn operation-btn-yellow">÷</button>
+      <button ref={actionDivision} onClick={(e) => handleClickActions(e)} className="operation-btn operation-btn-yellow">÷</button>
 
       <button ref={number7} onClick={(e) => handleClickNumbers(e)} className="operation-btn">7</button>
       <button ref={number8} onClick={(e) => handleClickNumbers(e)} className="operation-btn">8</button>
       <button ref={number9} onClick={(e) => handleClickNumbers(e)} className="operation-btn">9</button>
-      <button ref={actionTimes} onClick={() => dispatch(numberSlice.actions.setAction('*'))} className="operation-btn operation-btn-yellow">x</button>
+      <button ref={actionTimes} onClick={(e) => handleClickActions(e)} className="operation-btn operation-btn-yellow">x</button>
 
       <button ref={number4} onClick={(e) => handleClickNumbers(e)} className="operation-btn">4</button>
       <button ref={number5} onClick={(e) => handleClickNumbers(e)} className="operation-btn">5</button>
       <button ref={number6} onClick={(e) => handleClickNumbers(e)} className="operation-btn">6</button>
-      <button ref={actionMinus} onClick={() => dispatch(numberSlice.actions.setAction('-'))} className="operation-btn operation-btn-yellow">-</button>
+      <button ref={actionMinus} onClick={(e) => handleClickActions(e)} className="operation-btn operation-btn-yellow">-</button>
 
       <button ref={number1} onClick={(e) => handleClickNumbers(e)} className="operation-btn">1</button>
       <button ref={number2} onClick={(e) => handleClickNumbers(e)} className="operation-btn">2</button>
       <button ref={number3} onClick={(e) => handleClickNumbers(e)} className="operation-btn">3</button>
-      <button ref={actionPlus} onClick={() => dispatch(numberSlice.actions.setAction('+'))} className="operation-btn operation-btn-yellow">+</button>
+      <button ref={actionPlus} onClick={(e) => handleClickActions(e)} className="operation-btn operation-btn-yellow">+</button>
 
       <button ref={number0} onClick={(e) => handleClickNumbers(e)} className="operation-btn col-span-2">0</button>
       <button ref={actionDot} onClick={(e) => handleClickNumbers(e)} className="operation-btn">.</button>
