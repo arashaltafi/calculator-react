@@ -7,10 +7,10 @@ const ResultComponent = () => {
 
   return (
     <div className="w-full px-4 py-2 flex flex-col items-end justify-center gap-2">
-      <p className="text-xl font-normal select-text text-slate-400 dark:text-slate-500">
+      <p className="w-3/4 overflow-hidden flex justify-end text-xl font-normal select-text text-slate-400 dark:text-slate-500">
         {number || ' 0 '}
       </p>
-      <p className="text-4xl font-bold select-all">
+      <p className="w-3/4 overflow-hidden flex justify-end text-4xl font-bold select-all">
         {result || ' 0 '}
       </p>
     </div>

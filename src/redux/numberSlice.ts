@@ -15,10 +15,13 @@ const numberSlice = createSlice({
     initialState,
     reducers: {
         setNumber: (state, action: PayloadAction<string>) => {
-            state.number += action.payload;
+            if (state.number.length < 15) {
+                state.number += action.payload;
+            }
         },
         setSymbol: (state, action: PayloadAction<string>) => {
-            if (state.number.slice(-1) !== "" && state.number.slice(-1) !== ".") {
+            const symbols = ['+', '-', '*', '/'];
+            if (!symbols.includes(state.number.slice(-1)) && state.number.slice(-1) !== "" && state.number.slice(-1) !== ".") {
                 state.number = state.number + action.payload;
             }
         },
