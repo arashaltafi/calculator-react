@@ -66,6 +66,29 @@ export default defineConfig({
             purpose: "maskable any"
           }
         ]
+      },
+      registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp('.*'),
+            handler: 'CacheFirst' //NetworkFirst  or  CacheFirst
+          }
+        ],
+
+        skipWaiting: true,
+        clientsClaim: true,
+        sourcemap: true,
+        cleanupOutdatedCaches: false,
+        globPatterns: [
+          'assets/*.{js,css,html,ico,png,svg, png, jpg}',
+          'assets/fonts/*.{ttf, woff,woff2}',
+          '*.{js,css,html,ico,png,svg, png, jpg}'
+        ]
+      },
+      devOptions: {
+        enabled: true
       }
     })
   ]
