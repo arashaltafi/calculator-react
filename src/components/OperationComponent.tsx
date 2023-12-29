@@ -134,6 +134,8 @@ const OperationComponent = () => {
     const actionSelected: string | null = e.currentTarget.textContent || '+'
     if (actionSelected === 'x') {
       dispatch(numberSlice.actions.setSymbol('*'))
+    } else if (actionSelected === '÷') {
+      dispatch(numberSlice.actions.setSymbol('/'))
     } else {
       dispatch(numberSlice.actions.setSymbol(actionSelected))
     }
