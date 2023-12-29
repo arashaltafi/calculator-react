@@ -78,6 +78,10 @@ const OperationComponent = () => {
           actionEqual.current?.click()
           actionEqual.current?.classList.add('operation-btn-green-active')
           break;
+        case 'Enter':
+          actionEqual.current?.click()
+          actionEqual.current?.classList.add('operation-btn-green-active')
+          break;
         case '+':
           actionPlus.current?.click()
           actionPlus.current?.classList.add('operation-btn-yellow-active')
@@ -95,6 +99,10 @@ const OperationComponent = () => {
           actionDivision.current?.classList.add('operation-btn-yellow-active')
           break;
         case 'Backspace':
+          actionDel.current?.click()
+          actionDel.current?.classList.add('operation-btn-red-active')
+          break;
+        case 'Delete':
           actionDel.current?.click()
           actionDel.current?.classList.add('operation-btn-red-active')
           break;

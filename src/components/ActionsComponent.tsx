@@ -1,4 +1,3 @@
-import { LuTimerReset } from "react-icons/lu";
 import { MdOutlineNightlight } from "react-icons/md";
 import { WiDaySunny } from "react-icons/wi";
 
@@ -17,15 +16,10 @@ const ActionsComponent = () => {
     }
   }
 
-  const showHistory = () => {
-    alert('history')
-  }
-
   return (
     <div className="w-full px-4 py-2 flex flex-row items-center justify-start gap-4">
       <MdOutlineNightlight onClick={changeTheme} className='bg-action dark:hidden' />
       <WiDaySunny onClick={changeTheme} className='bg-action hidden dark:block' />
-      <LuTimerReset onClick={showHistory} className='bg-action' />
     </div>
   )
 }
