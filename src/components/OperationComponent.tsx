@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import numberSlice from "../redux/numberSlice"
 
@@ -22,9 +22,8 @@ const OperationComponent = () => {
   const actionPlus = useRef<HTMLButtonElement | null>(null)
   const actionMinus = useRef<HTMLButtonElement | null>(null)
   const actionTimes = useRef<HTMLButtonElement | null>(null)
-  const actionRemaining = useRef<HTMLButtonElement | null>(null)
   const actionAC = useRef<HTMLButtonElement | null>(null)
-  const actionPlusMinus = useRef<HTMLButtonElement | null>(null)
+  const actionDel = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
@@ -77,7 +76,7 @@ const OperationComponent = () => {
           break;
         case '=':
           actionEqual.current?.click()
-          actionEqual.current?.classList.add('operation-btn-yellow-active')
+          actionEqual.current?.classList.add('operation-btn-green-active')
           break;
         case '+':
           actionPlus.current?.click()
@@ -95,12 +94,9 @@ const OperationComponent = () => {
           actionDivision.current?.click()
           actionDivision.current?.classList.add('operation-btn-yellow-active')
           break;
-        case '%':
-          actionRemaining.current?.click()
-          actionRemaining.current?.classList.add('operation-btn-gray-active')
-          break;
         case 'Backspace':
-          alert('Backspace')
+          actionDel.current?.click()
+          actionDel.current?.classList.add('operation-btn-red-active')
           break;
         default:
           break;
@@ -119,41 +115,34 @@ const OperationComponent = () => {
       number8.current?.classList.remove('operation-btn-active')
       number9.current?.classList.remove('operation-btn-active')
       actionDot.current?.classList.remove('operation-btn-active')
-      actionEqual.current?.classList.remove('operation-btn-yellow-active')
+      actionEqual.current?.classList.remove('operation-btn-green-active')
       actionPlus.current?.classList.remove('operation-btn-yellow-active')
       actionMinus.current?.classList.remove('operation-btn-yellow-active')
       actionTimes.current?.classList.remove('operation-btn-yellow-active')
       actionDivision.current?.classList.remove('operation-btn-yellow-active')
-      actionRemaining.current?.classList.remove('operation-btn-gray-active')
-      actionPlusMinus.current?.classList.remove('operation-btn-gray-active')
+      actionDel.current?.classList.remove('operation-btn-red-active')
       actionAC.current?.classList.remove('operation-btn-gray-active')
     })
   }, [])
 
-  const [number, setNumber] = useState<string>()
   const handleClickNumbers = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const numberSelected: string | null = e.currentTarget.textContent || '0'
-    if (number) {
-      setNumber(number + numberSelected)
-    } else {
-      setNumber(numberSelected)
-    }
+    dispatch(numberSlice.actions.setNumber(numberSelected))
   }
 
   const handleClickActions = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const actionSelected: string | null = e.currentTarget.textContent || '+'
-    dispatch(numberSlice.actions.setAction(actionSelected))
-    if (number) {
-      dispatch(numberSlice.actions.setNumber(parseInt(number)))
-      setNumber('')
+    if (actionSelected === 'x') {
+      dispatch(numberSlice.actions.setSymbol('*'))
+    } else {
+      dispatch(numberSlice.actions.setSymbol(actionSelected))
     }
   }
 
   return (
     <div className="w-full h-full px-4 py-2 grid grid-cols-4 grid-rows-5 items-center justify-center gap-4">
-      <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-gray">AC</button>
-      <button ref={actionPlusMinus} className="operation-btn operation-btn-gray">±</button>
-      <button ref={actionRemaining} className="operation-btn operation-btn-gray">%</button>
+      <button ref={actionAC} onClick={() => dispatch(numberSlice.actions.clearNumber())} className="operation-btn operation-btn-red col-span-2">AC</button>
+      <button ref={actionDel} onClick={() => dispatch(numberSlice.actions.deleteNumber())} className="operation-btn operation-btn-red">Del</button>
       <button ref={actionDivision} onClick={(e) => handleClickActions(e)} className="operation-btn operation-btn-yellow">÷</button>
 
       <button ref={number7} onClick={(e) => handleClickNumbers(e)} className="operation-btn">7</button>
@@ -173,7 +162,7 @@ const OperationComponent = () => {
 
       <button ref={number0} onClick={(e) => handleClickNumbers(e)} className="operation-btn col-span-2">0</button>
       <button ref={actionDot} onClick={(e) => handleClickNumbers(e)} className="operation-btn">.</button>
-      <button ref={actionEqual} onClick={() => dispatch(numberSlice.actions.calculateResult())} className="operation-btn operation-btn-yellow">=</button>
+      <button ref={actionEqual} onClick={() => dispatch(numberSlice.actions.calculate())} className="operation-btn operation-btn-green">=</button>
     </div>
   )
 }

@@ -1,32 +1,42 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface NumberState {
-    number: number[],
-    result: number,
-    action: string,
+    number: string,
+    result: string,
 }
 
 const initialState: NumberState = {
-    number: [],
-    result: 0,
-    action: '',
+    number: '',
+    result: ''
 }
 
 const numberSlice = createSlice({
     name: 'numbers',
     initialState,
     reducers: {
-        setNumber: (state, action: PayloadAction<number>) => {
-            state.number.push(action.payload)
+        setNumber: (state, action: PayloadAction<string>) => {
+            state.number += action.payload;
         },
-        setAction: (state, action: PayloadAction<string>) => {
-            state.action = action.payload
+        setSymbol: (state, action: PayloadAction<string>) => {
+            if (state.number.slice(-1) !== "" && state.number.slice(-1) !== ".") {
+                state.number = state.number + action.payload;
+            }
         },
-        calculateResult: (state) => {
-            state.result = state.number[0]
+        calculate: (state) => {
+            state.result = eval(state.number).toString();
+        },
+        deleteNumber: (state) => {
+            if (state.number.slice(-1) === " ") {
+                state.number = state.number.substring(0, state.number.length - 3);
+            } else if (state.number.slice(-2) === "0.") {
+                state.number = state.number.substring(0, state.number.length - 2);
+            } else {
+                state.number = state.number.substring(0, state.number.length - 1);
+            }
         },
         clearNumber: (state) => {
-            state.number = []
+            state.number = '';
+            state.result = '';
         }
     },
 })

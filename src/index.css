@@ -152,6 +152,38 @@
     @apply bg-slate-400 dark:bg-slate-600 scale-105
   }
 
+  .operation-btn-red {
+    @apply bg-red-300 dark:bg-red-500 font-bold transition cursor-pointer;
+
+    &:hover {
+      @apply bg-red-200 dark:bg-red-400
+    }
+
+    &:active {
+      @apply bg-red-400 dark:bg-red-600 scale-105
+    }
+  }
+
+  .operation-btn-red-active {
+    @apply bg-red-400 dark:bg-red-600 scale-105
+  }
+
+  .operation-btn-green {
+    @apply bg-green-300 dark:bg-green-500 font-bold transition cursor-pointer;
+
+    &:hover {
+      @apply bg-green-200 dark:bg-green-400
+    }
+
+    &:active {
+      @apply bg-green-400 dark:bg-green-600 scale-105
+    }
+  }
+
+  .operation-btn-green-active {
+    @apply bg-green-400 dark:bg-green-600 scale-105
+  }
+
   .neumorphism {
     @apply bg-[#f0f0f0] text-black border-none py-4 px-6 text-lg cursor-pointer rounded-xl;
     box-shadow: 5px 5px 15px #c7c7c7, -5px -5px 15px #ffffff;
